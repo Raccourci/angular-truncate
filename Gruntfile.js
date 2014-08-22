@@ -101,7 +101,7 @@ module.exports = function(grunt) {
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.loadNpmTasks('grunt-contrib-connect');
+  // grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Load the plugin that provides the "watch" task.
   //grunt.loadNpmTasks('grunt-contrib-watch');

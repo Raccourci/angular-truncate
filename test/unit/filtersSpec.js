@@ -93,5 +93,13 @@ describe('truncate', function () {
             expect(wordFilter('abc def ghhi jkl mno pqr stu vw xyz', 25)).toEqual('abc def ghhi jkl mno pqr stu vw xyz');
         });
 
+        it('should not trim because of tolerance', function () {
+            expect(wordFilter('abc def ghhi jkl mno pqr', 5, 1)).toEqual('abc def ghhi jkl mno pqr');
+        });
+
+        it('should trim these down even if tolerance', function () {
+            expect(wordFilter('abc def ghhi jkl mno pqr stu vw xyz', 5, 1)).toEqual('abc def ghhi jkl mno');
+        });
+
     });
 });
