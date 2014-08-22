@@ -17,6 +17,9 @@ angular.module('truncate', [])
                         input = input.substr(0, input.length -1);
                     }
                 }
+                if ( input.charAt(input.length-1) === ',' ) {
+                    input = input.substr(0, input.length-1);
+                }
                 return input + '\u2026';
             }
             return input;
@@ -25,9 +28,10 @@ angular.module('truncate', [])
     .filter('words', function () {
         return function (input, words, tolerance) {
 
+            tolerance = parseFloat(tolerance || 0, 10);
+
             if (isNaN(words)) return input;
             if (words <= 0) return '';
-            if (!tolerance) tolerance = 0;
             if ( tolerance && tolerance < 1 ) {
                 tolerance = Math.ceil( words * tolerance );
             }
@@ -35,7 +39,13 @@ angular.module('truncate', [])
             if (input) {
                 var inputWords = input.split(/\s+/);
                 if (inputWords.length > words + tolerance ) {
-                    input = inputWords.slice(0, words).join(' ') + '\u2026';
+                    input = inputWords.slice(0, words).join(' ');
+
+                    if ( input.charAt(input.length-1) === ',' ) {
+                        input = input.substr(0, input.length-1);
+                    }
+
+                    input = input + '\u2026'; 
                 }
             }
             return input;

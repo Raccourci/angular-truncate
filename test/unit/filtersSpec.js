@@ -29,6 +29,10 @@ describe('truncate', function () {
             expect(characterFilter('1234567890', 5)).toEqual('12345...');
         });
 
+        it('should trim these down and remove comma', function () {
+            expect(characterFilter('1234,567890', 5)).toEqual('1234...');
+        });
+
         it('should trim this down including the space', function () {
             expect(characterFilter('123456789 10 11 12 13 14', 13)).toEqual('123456789 10...');
         });
@@ -79,6 +83,10 @@ describe('truncate', function () {
 
         it('should trim these down and handle multi-spaces', function () {
             expect(wordFilter('abc def    ghhi jkl    mno pqr stu    vw   xyz', 5)).toEqual('abc def ghhi jkl mno...');
+        });
+
+        it('should trim these down and remove comma', function () {
+            expect(wordFilter('abc def ghhi jkl mno, pqr stu vw xyz', 5)).toEqual('abc def ghhi jkl mno...');
         });
 
         it('should not trim invalid words numbers', function () {

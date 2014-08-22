@@ -39,7 +39,7 @@
         </label>
         <label>
             Tolerance:
-            <input ng-model="tolerance" type="float"/>            
+            <input ng-model="tolerance" type="number" step="0.01"/>            
         </label>
         <h4>Code</h4>
         <pre>{<span></span>{ text | words:{{ numWords }}:{{tolerance}} }<span></span>}</pre>
